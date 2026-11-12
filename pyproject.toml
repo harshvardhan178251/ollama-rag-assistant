@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ollama-rag-assistant"
+version = "1.0.0"
+description = "Ask questions about your own documents with a fully local, keyless Ollama RAG pipeline"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Harsh Vardhan", email = "reddy.harshavardhan1010@gmail.com" }]
+keywords = ["rag", "ollama", "local-llm", "retrieval-augmented-generation", "embeddings", "sqlite"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development :: Libraries",
+]
+
+[project.optional-dependencies]
+web = ["fastapi>=0.110", "uvicorn>=0.29"]
+dev = ["pytest>=8"]
+
+[project.urls]
+Repository = "https://github.com/harshvardhan178251/ollama-rag-assistant"
+
+[project.scripts]
+rag-assistant = "rag_assistant.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
